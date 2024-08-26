@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: #En pipeline
+  repository: ygsanabria/api-helm:1
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
 
@@ -39,6 +39,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
+  name: api-helm-svc
   type: ClusterIP
   port: 11000
 
@@ -80,7 +81,7 @@ readinessProbe:
     port: http
 
 autoscaling:
-  enabled: false
+  enabled: true
   minReplicas: 2
   maxReplicas: 10
   targetCPUUtilizationPercentage: 80
