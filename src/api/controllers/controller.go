@@ -10,5 +10,9 @@ func (c *Controller) Health(ctx *gin.Context) {
 }
 
 func (c *Controller) Greeting(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{"greeting": "Hello From Golang v2"})
+	ctx.JSON(http.StatusOK, gin.H{"greeting": "Hello From Golang"})
+}
+
+func (c *Controller) Bye(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{"bye": "Bye From Golang"})
 }

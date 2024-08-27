@@ -14,5 +14,6 @@ func ConfigureRoutes(
 	{
 		api.GET("health", controller.Health)
 		api.GET("greeting", controller.Greeting)
+		api.GET("bye", controller.Greeting)
 	}
 }

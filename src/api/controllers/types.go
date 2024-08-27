@@ -7,6 +7,7 @@ import (
 type IController interface {
 	Health(ctx *gin.Context)
 	Greeting(ctx *gin.Context)
+	Bye(ctx *gin.Context)
 }
 
 type Controller struct {
