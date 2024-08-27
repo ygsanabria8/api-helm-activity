@@ -79,7 +79,7 @@ jobs:
         run: |
           cd charts
           git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.email "yesid2571@hotmail.com"
           git config --global credential.helper 'store --file ~/.git-credentials'
           echo "https://${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
