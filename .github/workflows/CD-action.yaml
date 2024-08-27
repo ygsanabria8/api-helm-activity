@@ -67,21 +67,13 @@ jobs:
         run: tar -xzvf *.tgz
 
       - name: Cloning Chart Repo
-        run: git clone ${{ vars.REPO_CHART }} charts
+        run: git clone https://ygsanabria8:${{ secrets.GH_TOKEN }}@github.com/ygsanabria8/api-helm-activity.charts charts
 
       - name: Replace Api Helm Files
         run: |
           cd charts
           rm -rf api-helm
           mv ../api-helm .
-
-      - name: Setup GitHub credentials
-        run: |
-          cd charts
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git config --global credential.helper 'store --file ~/.git-credentials'
-          echo "https://${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
       - name: Commit and Push to second repository
         run: |
