@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cloning Repository
-        uses: actions/checkout@v4
+        run: git clone https://github.com/ygsanabria8/api-helm-activity.git
 
       - name: Setup Helm
         uses: azure/setup-helm@v4.2.0
