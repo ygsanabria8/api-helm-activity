@@ -61,7 +61,7 @@ jobs:
           version: v3.15.4
 
       - name: Build Helm Char
-        run: helm package .docker/api-helm . --app-version ${{ github.run_number }}
+        run: helm package .docker/api-helm/ . --app-version ${{ github.run_number }}
 
       - name: List contents including .docker
         run: ls -la
