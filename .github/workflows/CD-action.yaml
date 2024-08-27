@@ -64,16 +64,21 @@ jobs:
         run: helm package .docker/api-helm/ --app-version ${{ github.run_number }}
 
       - name: Extract Helm package
-        run: |
-          tar -xzvf *.tgz
-          ls -la
+        run: tar -xzvf *.tgz
 
       - name: Cloning Chart Repo
         run: git clone ${{ vars.REPO_CHART }} charts
-#
-#      - name: Clone Chars Repo
-#        run: |
-#          git clone https://github.com/ygsanabria8/api-helm-activity.charts.git |
-#          && mv api-helm-activity/api-helm-1.1.0.tgz api-helm-activity.charts |
-#          git add . && git commit "new version helm ${{ github.run_number }}" |
-#          git push origin main
+
+      - name: Move extracted files to deploy repo
+        run: mv -v ./api-helm-1.0.0/ deploy-repo/
+
+      - name: Commit and Push to second repository
+        run: |
+          cd charts
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Upgrade Helm package to version ${{ github.run_number }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
