@@ -56,11 +56,9 @@ jobs:
       - name: Setup Helm
         uses: azure/setup-helm@v4.2.0
 
+
       - name: Build Helm Char
-        run: cd api-helm-activity
-#
-#      - name: Build Helm Char
-#        run: helm package api-helm-activity/.docker/api-helm/ api-helm-activity/ --app-version ${{ github.run_number }}
+        run: cd api-helm-activity/.docker && helm package api-helm/ . --app-version ${{ github.run_number }} && ls
 #
 #      - name: Clone Chars Repo
 #        run: |
