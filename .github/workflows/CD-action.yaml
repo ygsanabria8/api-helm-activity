@@ -70,7 +70,7 @@ jobs:
         run: git clone ${{ vars.REPO_CHART }} charts
 
       - name: Move extracted files to deploy repo
-        run: mv -v ./api-helm-1.0.0/ deploy-repo/
+        run: mv -v ./api-helm-1.0.0/* charts/
 
       - name: Commit and Push to second repository
         run: |
