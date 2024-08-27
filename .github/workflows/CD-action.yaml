@@ -87,5 +87,7 @@ jobs:
         run: |
           cd charts
           git add .
-          git commit -m "Upgrade Helm Package To Version: ${{ github.run_number }}"
-          git push
+          git commit -m "Upgrade Api Helm Version To: ${{ github.run_number }}"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
