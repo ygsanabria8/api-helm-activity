@@ -70,15 +70,19 @@ jobs:
         run: git clone ${{ vars.REPO_CHART }} charts
 
       - name: Move extracted files to deploy repo
-        run: mv -v ./api-helm/* charts/
+        run: mv -v ./api-helm/* charts/api-helm/
 
-      - name: Commit and Push to second repository
+      - name: Setup GitHub credentials
         run: |
           cd charts
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git config --global credential.helper 'store --file ~/.git-credentials'
+          echo "https://${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
+      - name: Commit and Push to second repository
+        run: |
+          cd charts
           git add .
-          git commit -m "Upgrade Helm package to version ${{ github.run_number }}"
+          git commit -m "Upgrade Helm Package To Version: ${{ github.run_number }}"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
