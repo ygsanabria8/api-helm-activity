@@ -57,13 +57,11 @@ jobs:
         uses: azure/setup-helm@v4.2.0
 
       - name: Build Helm Char
-        run: ls
-#      - name: Build Helm Char
-#        run: helm package .docker/api-helm/ . --app-version ${{ github.run_number }}
-#
-#      - name: Clone Chars Repo
-#        run: |
-#          git clone https://github.com/ygsanabria8/api-helm-activity.charts.git |
-#          && mv api-helm-1.1.0.tgz api-helm-activity.charts |
-#          git add . && git commit "new version helm ${{ github.run_number }}" |
-#          git push origin main
+        run: helm package api-helm-activity/.docker/api-helm/ . --app-version ${{ github.run_number }}
+
+      - name: Clone Chars Repo
+        run: |
+          git clone https://github.com/ygsanabria8/api-helm-activity.charts.git |
+          && mv api-helm-activity/api-helm-1.1.0.tgz api-helm-activity.charts |
+          git add . && git commit "new version helm ${{ github.run_number }}" |
+          git push origin main
