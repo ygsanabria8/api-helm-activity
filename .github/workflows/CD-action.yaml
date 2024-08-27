@@ -75,6 +75,14 @@ jobs:
           rm -rf api-helm
           mv ../api-helm .
 
+      - name: Setup GitHub credentials
+        run: |
+          cd charts
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git config --global credential.helper 'store --file ~/.git-credentials'
+          echo "https://${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
       - name: Commit and Push to second repository
         run: |
           cd charts
