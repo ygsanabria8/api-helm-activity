@@ -69,8 +69,11 @@ jobs:
       - name: Cloning Chart Repo
         run: git clone ${{ vars.REPO_CHART }} charts
 
-      - name: Move extracted files to deploy repo
-        run: mv -v ./api-helm/* charts/api-helm/
+      - name: Replace Api Helm Files
+        run: |
+          cd charts
+          rm -rf api-helm
+          mv ../api-helm .
 
       - name: Setup GitHub credentials
         run: |
