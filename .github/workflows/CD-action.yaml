@@ -51,14 +51,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cloning Repository
-        run: git clone https://github.com/ygsanabria8/api-helm-activity.git
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup Helm
         uses: azure/setup-helm@v4.2.0
+        with:
+          version: v3.15.4
 
+      - name: Run Helm version
+        run: helm version
 
-      - name: Build Helm Char
-        run: cd api-helm-activity/.docker && helm package api-helm/ . --app-version ${{ github.run_number }} && ls
+      - name: List contents including .docker
+        run: ls -la
+
+#      - name: Build Helm Char
+#        run: cd api-helm-activity/.docker && helm package api-helm/ . --app-version ${{ github.run_number }} && ls
 #
 #      - name: Clone Chars Repo
 #        run: |
