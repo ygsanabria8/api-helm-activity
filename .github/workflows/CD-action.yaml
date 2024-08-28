@@ -83,7 +83,7 @@ jobs:
           git config --global credential.helper 'store --file ~/.git-credentials'
           echo "https://${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
-      - name: Commit and Push to second repository
+      - name: Upload Changes Into Chart Repo
         run: |
           cd charts
           git add .
