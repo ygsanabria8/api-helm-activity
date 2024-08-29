@@ -14,5 +14,5 @@ func (c *Controller) Greeting(ctx *gin.Context) {
 }
 
 func (c *Controller) Bye(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{"bye": "Bye From Golang"})
+	ctx.JSON(http.StatusOK, gin.H{"bye": "Bye From ArgoCD"})
 }
