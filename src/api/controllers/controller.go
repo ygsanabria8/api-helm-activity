@@ -10,7 +10,7 @@ func (c *Controller) Health(ctx *gin.Context) {
 }
 
 func (c *Controller) Greeting(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{"greeting": "Hello From ArgoCD"})
+	ctx.JSON(http.StatusOK, gin.H{"greeting": "Hello From ArgoCD!"})
 }
 
 func (c *Controller) Bye(ctx *gin.Context) {
